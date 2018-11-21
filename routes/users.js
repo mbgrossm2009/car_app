@@ -53,6 +53,7 @@ if (errors){
     username:username,
     password:password
   }
+}
 
   bcrypt.genSalt(10, function(err, salt){
     bcrypt.hash(newUser.password, salt, function(err, hash){
@@ -64,15 +65,55 @@ if (errors){
           console.log('User Added. Good JOB using MONGODB Matt!');
           req.flash('success', "You are registered and can log in");
           res.location('/');
-          res.redirect('/')
+          res.redirect('/');
+        }
+      });
+    })
+  });
+
+
+passport.serializeUser(function(user, done) {
+  done(null, user._id);
+});
+
+passport.deserializeUser(function(id, done) {
+  db.users.findOne({_id: mongojs.OnjectId(id)}, function(err,user){
+    done(err,user);
+  });
+});
+
+passport.use(new LocalStrategy(
+  function(username, password, done){
+    db.users.findOne({username:username}, function(err,user){
+      if(err){
+        return done(err);
+      }
+      if(!user){
+        return done(null,false,{message: 'Incorrect Username'});
+      }
+
+      bcrypt.compare(password, user.password, function(err, isMatch){
+        if(err){
+          return done(err);
+        }
+        if(isMatch){
+          return done(null, user);
+        } else {
+          return done(null,false,{message: 'Incorrect Password'});
         }
       });
     });
-  });
-
-}
-});
+  }
+));
 
 
 
+// Login Post
+router.post('/login', passport.authenticate('local', { successRedirect: '/',
+                                                    failureRedirect: '/users/login',
+                                                    failureFlash: "Invalid Username or Password"}+
+                                                    function(req,res){
+                                                      console.log('Auth Successful');
+                                                      res.redirect('/');
+                                                    }));
 module.exports = router;
