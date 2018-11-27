@@ -106,8 +106,6 @@ passport.use(new LocalStrategy(
   }
 ));
 
-
-
 // Login Post
 router.post('/login', passport.authenticate('local', { successRedirect: '/',
                                                     failureRedirect: '/users/login',
@@ -116,4 +114,4 @@ router.post('/login', passport.authenticate('local', { successRedirect: '/',
                                                       console.log('Auth Successful');
                                                       res.redirect('/');
                                                     }));
-                                                  }); module.exports = router;  //brackets needed here
+                                                  }); module.exports = router;

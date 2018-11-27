@@ -14,7 +14,9 @@
        </div>
        <div id="navbar" class="collapse navbar-collapse">
          <ul class="nav navbar-nav navbar-right">
-           <li><a href="/users/logout">Logout</a></li>
+           <li><a href="/users/register">Sign Up</a></li>
+           <li><a href="/users/login">Sign In</a></li>
+
 
          </ul>
        </div><!--/.nav-collapse -->
@@ -22,7 +24,9 @@
    </nav>
 
        <div class="container">
+          <div class = "alert">
 
+          </div>
          <div class="starter-template">
            <h1>Want to buy a car?</h1>
            <p class="lead"> Choose from Down Below </p>
@@ -33,17 +37,22 @@
           <div class = "row">
             <%for(i=0;i<cars.length;i++){%>
               <ul class = "col-lg-3">
-              <li> <img src="/images/car.jpg" class = "car img-fluid"></li>
-              <li> Car: <%=cars[i].name %></li>
-              <li>Price: $<%= cars[i].price%></li>
-              <li> <a href = "/purchase"> Click Here to Purchase </a></li>
-                </ul>
-              <% } %>
-            </div>
+                <li> <img src="/images/car.jpg" class = "car img-fluid"></li>
+                <li> Car: <%=cars[i].name %></li>
+                <li>Price: $<%= cars[i].price%></li>
+                <li><button class="btn btn-primary btn-lg btn-block" id = "car_button" type="submit"/>Click Here</button></li>
+                  <script type="text/javascript">
+                    document.getElementById("car_button").onclick = function () {
+                      location.href = "/purchase";
+                    };
+                </script>
+              </ul>
+            <% } %>
+          </div>
       <%  } %>
 
           <%displayCars()%>
 
 
-       </div>
-<%- include('includes/footer') %>
+    </div>
+    <%- include('includes/footer') %>
