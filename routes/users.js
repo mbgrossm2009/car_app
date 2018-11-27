@@ -116,4 +116,4 @@ router.post('/login', passport.authenticate('local', { successRedirect: '/',
                                                       console.log('Auth Successful');
                                                       res.redirect('/');
                                                     }));
-module.exports = router;
+                                                  }); module.exports = router;  //brackets needed here

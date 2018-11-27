@@ -28,5 +28,21 @@
            <p class="lead"> Choose from Down Below </p>
          </div>
 
+
+        <div id = "cars">
+
+        <% function displayCars(){ %>
+            <ul class = "col-lg-3 row">
+            <%for(i=0;i<cars.length;i++){%>
+              <li class = ""> Car: <%=cars[i].name %></li>
+              <li>Price: <%= cars[i].price%></li>
+              <li> <a href = "/purchase"> Click Here to Purchase </a></li>
+          <% } %>
+              </ul>
+      <%  } %>
+          <%displayCars()%>
+
+        </div>
+
        </div>
 <%- include('includes/footer') %>

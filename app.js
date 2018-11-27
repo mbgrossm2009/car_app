@@ -9,6 +9,7 @@ let flash = require("connect-flash");
 let port = 3000;
 let routes = require("./routes/index");
 let users = require("./routes/users");
+let purchase = require("./routes/purchase")
 let app = express();
 
 app.set("views", path.join(__dirname, "views"));
@@ -59,8 +60,10 @@ app.use(function(req, res, next) {
 // routes
 app.use("/", routes);
 app.use("/users", users);
+app.use("/purchase", purchase);
 app.listen(port);
 console.log("Server started on port " + port);
+
 
 // app.set('view engine', 'pug');
 // app.set('view engine', 'ejs');
