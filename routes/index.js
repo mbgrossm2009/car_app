@@ -10,9 +10,26 @@ router.get('/', function(req,res){
      price: 25000
    },
    {
-     name: "Toyata Camry",
+     name: "Toyota Camry",
      price: 2500
+   },
+   {
+     name: "Ford Escape",
+     price: 50000
+   },
+   {
+     name: "Toyota CRV",
+     price: 34200
+   },
+   {
+     name: "Corvette",
+     price: 100000
+   },
+   {
+     name: "Subaru Forestor",
+     price: 89999
    }
+
  ]);
 
  router.get('/', function(req,res){
@@ -21,9 +38,10 @@ router.get('/', function(req,res){
 
  });
 
-
-
 });
+
+
+
 
 
 

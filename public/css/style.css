@@ -46,3 +46,11 @@ body {
 ul {
   list-style-type: none;
 }
+.checkout {
+background-color: #F8F9FA !important;
+}
+
+.car {
+  width: 83%;
+height: auto;
+}

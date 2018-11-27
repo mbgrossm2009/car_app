@@ -29,20 +29,21 @@
          </div>
 
 
-        <div id = "cars">
-
         <% function displayCars(){ %>
-            <ul class = "col-lg-3 row">
+          <div class = "row">
             <%for(i=0;i<cars.length;i++){%>
-              <li class = ""> Car: <%=cars[i].name %></li>
-              <li>Price: <%= cars[i].price%></li>
+              <ul class = "col-lg-3">
+              <li> <img src="/images/car.jpg" class = "car img-fluid"></li>
+              <li> Car: <%=cars[i].name %></li>
+              <li>Price: $<%= cars[i].price%></li>
               <li> <a href = "/purchase"> Click Here to Purchase </a></li>
-          <% } %>
-              </ul>
+                </ul>
+              <% } %>
+            </div>
       <%  } %>
+
           <%displayCars()%>
 
-        </div>
 
        </div>
 <%- include('includes/footer') %>
